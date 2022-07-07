@@ -20,9 +20,16 @@ function dataForm(event) {
 
 function submitForm(event) {
   event.preventDefault();
-  console.log(dataUser);
-  localStorage.removeItem('feedback-form-state');
-  event.currentTarget.reset();
+  if (
+    dataUser.email !== '' &&
+    dataUser.email !== undefined &&
+    dataUser.message !== '' &&
+    dataUser.message !== undefined
+  ) {
+    console.log(dataUser);
+    localStorage.removeItem('feedback-form-state');
+    event.currentTarget.reset();
+  }
 }
 
 function updateForm() {

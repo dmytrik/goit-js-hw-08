@@ -29,14 +29,23 @@ function submitForm(event) {
     console.log(dataUser);
     localStorage.removeItem('feedback-form-state');
     event.currentTarget.reset();
+    return;
   }
+  if (
+    (dataUser.email === '' || dataUser.email === undefined) &&
+    (dataUser.message === '' || dataUser.message === undefined)
+  ) {
+    alert('Ви не ввели ваші дані');
+    return;
+  }
+  alert('Ви ввели не всі дані');
 }
 
 function updateForm() {
   const user = JSON.parse(localStorage.getItem('feedback-form-state'));
   if (user) {
-    email.value = user.email;
-    message.value = user.message;
+    email.value = user.email ? user.email : '';
+    message.value = user.message ? user.message : '';
     dataUser.email = user.email;
     dataUser.message = user.message;
   }
